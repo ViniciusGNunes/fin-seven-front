@@ -119,7 +119,7 @@ function VerifyEmailContent() {
                 type="primary"
                 size="large"
                 block
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/access")}
               >
                 Acessar Minha Conta
               </Button>
@@ -161,7 +161,7 @@ function VerifyEmailContent() {
                 </Button>
               </div>
 
-              <Button type="link" onClick={() => router.push("/login")} style={{ color: "var(--color-success)" }}>
+              <Button type="link" onClick={() => router.push("/access")} style={{ color: "var(--color-success)" }}>
                 Voltar para o Login
               </Button>
             </div>

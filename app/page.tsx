@@ -90,7 +90,7 @@ export default function LandingPage() {
           <div className={styles.navActions}>
             <Button
               type="primary"
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/access")}
               style={{ fontWeight: 600 }}
             >
               Acessar FinTrack
@@ -120,7 +120,7 @@ export default function LandingPage() {
                 className={styles.primaryCta}
                 icon={<ArrowRightOutlined />}
                 iconPosition="end"
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/access")}
               >
                 Acessar Plataforma
               </Button>
@@ -221,7 +221,7 @@ export default function LandingPage() {
               type="primary"
               size="large"
               className={styles.ctaButton}
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/access")}
             >
               Acessar FinTrack
             </Button>
@@ -233,7 +233,7 @@ export default function LandingPage() {
             </div>
             <div className={styles.footerLinks}>
               <a href="#features">Recursos</a>
-              <a onClick={() => router.push("/login")} style={{ cursor: "pointer" }}>
+              <a onClick={() => router.push("/access")} style={{ cursor: "pointer" }}>
                 Acessar Plataforma
               </a>
             </div>

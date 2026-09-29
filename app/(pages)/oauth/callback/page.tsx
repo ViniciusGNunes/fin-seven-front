@@ -179,7 +179,7 @@ function OAuthCallbackContent() {
             </span>
           }
           extra={[
-            <Link href="/login" key="login">
+            <Link href="/access" key="login">
               <Button type="primary" size="large">
                 Voltar para o Login
               </Button>
