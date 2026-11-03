@@ -69,7 +69,7 @@ export default function ForgotPasswordPage() {
                 <Button
                   type="primary"
                   size="large"
-                  onClick={() => router.push("/login")}
+                  onClick={() => router.push("/access")}
                   block
                 >
                   Voltar para o Login
@@ -119,7 +119,7 @@ export default function ForgotPasswordPage() {
 
                 <div style={{ textAlign: "center", marginTop: 20 }}>
                   <Link
-                    href="/login"
+                    href="/access"
                     style={{ color: "var(--text-secondary)", display: "inline-flex", alignItems: "center", gap: 6 }}
                   >
                     <ArrowLeftOutlined style={{ fontSize: 12 }} /> Voltar para o login

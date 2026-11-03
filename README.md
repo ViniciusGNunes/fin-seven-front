@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinTrack
 
-## Getting Started
+A personal finance tracker that brings expenses, investments, debts, money owed to you, and savings goals into one place.
 
-First, run the development server:
+**Live:** [fin-track-front-five.vercel.app](https://fin-track-front-five.vercel.app) · **Backend:** [FinTrack](https://github.com/ViniciusGNunes/FinTrack)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What it does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Dashboard:** an overview of your finances.
+- **Expenses and calendar:** record transactions with categories, payment methods, and recurrence, then see income and expenses day by day.
+- **Investments:** track fixed income, variable income, and crypto, with contributions, liquidations, portfolio cash, and growth over time.
+- **Debts:** follow balances, interest, installments, and payments. A debt can generate its own expenses automatically.
+- **Receivables:** split a cost with other people and track who has paid you back.
+- **Goals:** set monthly investment, debt reduction, spending cap, savings, or portfolio targets, with optional automatic tracking.
+- **Accounts:** sign in with email and password, Google, GitHub, Discord, or X. Email confirmation and password reset included.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Engineering highlights
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Multi-provider authentication:** ASP.NET Core Identity with JWT in a cookie, plus four OAuth flows (Google, GitHub, Discord, X). The frontend guards private routes with Next.js `proxy.ts`.
+- **Live market data:** the backend pulls CDI and IPCA from the Banco Central do Brasil, stock and crypto quotes from brapi, Coinbase, and Binance, and exchange rates from AwesomeAPI. It falls back to default rates when a provider is down.
+- **Financial domain modeling:** investments with fixed-rate yield and profit/loss, debts with amortization state, and goals linked to debts and categories.
+- **Transactional email** through Resend for confirmation and password reset.
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| | |
+| --- | --- |
+| Frontend | Next.js 16, React 19 (React Compiler), TypeScript, Ant Design 6, Sass, Axios |
+| Backend | ASP.NET Core 9, EF Core 9, ASP.NET Core Identity, PostgreSQL |
+| Integrations | Google, GitHub, Discord, and X OAuth; Resend; brapi; Banco Central do Brasil |

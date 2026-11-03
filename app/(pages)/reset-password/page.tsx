@@ -105,9 +105,9 @@ function ResetPasswordContent() {
                 type="primary"
                 size="large"
                 block
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/access")}
               >
-                Fazer Login
+                Acessar FinTrack
               </Button>
             </div>
           )}

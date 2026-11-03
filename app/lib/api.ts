@@ -24,9 +24,14 @@ api.interceptors.response.use(
   (error) => {
     if (typeof window !== "undefined" && error.response?.status === 401) {
       Cookies.remove("X-Access-Token");
-      const currentPath = window.location.pathname;
-      if (currentPath !== "/login" && currentPath !== "/register" && currentPath !== "/") {
-        window.location.href = "/login";
+      if (
+        currentPath !== "/access" &&
+        currentPath !== "/login" &&
+        currentPath !== "/register" &&
+        currentPath !== "/" &&
+        currentPath !== "/corporate"
+      ) {
+        window.location.href = "/access";
       }
     }
     return Promise.reject(error);

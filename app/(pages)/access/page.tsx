@@ -14,7 +14,7 @@ import { FINTRACK_THEME } from "@/app/lib/theme";
 
 const { Title, Text } = Typography;
 
-export default function Page() {
+export default function AccessPage() {
   const router = useRouter();
   const [loadingState, setLoadingState] = useState<{
     loading: boolean;
@@ -49,10 +49,10 @@ export default function Page() {
               <>
                 <div className={styles.header}>
                   <Title level={2} className={styles.title}>
-                    Entrar no FinTrack
+                    Acessar o FinTrack
                   </Title>
                   <Text className={styles.subtitle}>
-                    Escolha seu provedor favorito para acessar ou criar sua conta
+                    Escolha seu provedor favorito para entrar ou criar sua conta
                   </Text>
                 </div>
 
