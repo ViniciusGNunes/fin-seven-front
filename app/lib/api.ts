@@ -24,6 +24,7 @@ api.interceptors.response.use(
   (error) => {
     if (typeof window !== "undefined" && error.response?.status === 401) {
       Cookies.remove("X-Access-Token");
+      const currentPath = window.location.pathname;
       if (
         currentPath !== "/access" &&
         currentPath !== "/login" &&
