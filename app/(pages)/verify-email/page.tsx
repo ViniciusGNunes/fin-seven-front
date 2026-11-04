@@ -13,7 +13,7 @@ import {
 } from "antd";
 import { CheckCircleFilled, CloseCircleFilled, MailOutlined, SendOutlined } from "@ant-design/icons";
 import { confirmEmail, resendConfirmationEmail } from "@/app/services/Backend/UserService";
-import { FINTRACK_THEME } from "@/app/lib/theme";
+import { FINSEVEN_THEME } from "@/app/lib/theme";
 import styles from "./page.module.scss";
 import { AxiosError } from "axios";
 
@@ -174,7 +174,7 @@ function VerifyEmailContent() {
 
 export default function VerifyEmailPage() {
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <Suspense fallback={<div style={{ minHeight: "100vh", background: "var(--bg-canvas)" }} />}>
         <VerifyEmailContent />
       </Suspense>

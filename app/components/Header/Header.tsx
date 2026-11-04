@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => router.push("/dashboard")}
         >
           <div className={styles.logoBadge}>F</div>
-          <span className={styles.brandTitle}>FinTrack</span>
+          <span className={styles.brandTitle}>FinSeven</span>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({
         </Space>
 
         <Popconfirm
-          title="Sair do FinTrack"
+          title="Sair do FinSeven"
           description="Tem certeza de que deseja sair e retornar à página inicial?"
           onConfirm={handleLogout}
           okText="Sair"

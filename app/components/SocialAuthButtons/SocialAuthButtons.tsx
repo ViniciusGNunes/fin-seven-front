@@ -146,7 +146,7 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({
         "Aguarde um momento enquanto você é redirecionado para autorização..."
       );
       const verifier = generateRandomString(64);
-      sessionStorage.setItem("fintrack_twitter_verifier", verifier);
+      sessionStorage.setItem("finseven_twitter_verifier", verifier);
 
       const challengeBuffer = await sha256(verifier);
       const challenge = base64UrlEncode(challengeBuffer);

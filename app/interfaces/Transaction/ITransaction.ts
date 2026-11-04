@@ -3,7 +3,7 @@ import {
   RecurrenceInterval,
   TransactionStatus,
   TransactionType,
-} from "@/app/Enums/FinTrackEnums";
+} from "@/app/Enums/FinSevenEnums";
 import { IExpenseRead } from "../Expenses/IExpenses";
 
 export interface ITransactionPost {

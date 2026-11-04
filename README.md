@@ -1,8 +1,8 @@
-# FinTrack
+# FinSeven
 
 A personal finance tracker that brings expenses, investments, debts, money owed to you, and savings goals into one place.
 
-**Live:** [fin-track-front-five.vercel.app](https://fin-track-front-five.vercel.app) · **Backend:** [FinTrack](https://github.com/ViniciusGNunes/FinTrack)
+**Live:** [finseven.vercel.app](https://finseven.vercel.app) · **Backend:** [FinSeven](https://github.com/ViniciusGNunes/FinSeven)
 
 ## What it does
 

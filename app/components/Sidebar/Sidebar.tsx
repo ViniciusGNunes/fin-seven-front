@@ -83,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         <div className={styles.logoContainer}>
           <div className={styles.logoBadge}>F</div>
-          {!collapsed && <span className={styles.logoText}>FinTrack</span>}
+          {!collapsed && <span className={styles.logoText}>FinSeven</span>}
         </div>
 
         <Menu
@@ -116,7 +116,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className={styles.drawerHeader}>
           <div className={styles.logoContainer}>
             <div className={styles.logoBadge}>F</div>
-            <span className={styles.logoText}>FinTrack</span>
+            <span className={styles.logoText}>FinSeven</span>
           </div>
           <button
             type="button"

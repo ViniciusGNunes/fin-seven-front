@@ -2,7 +2,7 @@ import {
   FixedRateType,
   InvestmentType,
   InvestmentTransactionType,
-} from "../../Enums/FinTrackEnums";
+} from "../../Enums/FinSevenEnums";
 
 export interface IInvestmentTransaction {
   investmentTransactionID: number;

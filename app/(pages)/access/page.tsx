@@ -10,7 +10,7 @@ import {
 import { useRouter } from "next/navigation";
 import { SocialAuthButtons } from "@/app/components/SocialAuthButtons/SocialAuthButtons";
 import styles from "./page.module.scss";
-import { FINTRACK_THEME } from "@/app/lib/theme";
+import { FINSEVEN_THEME } from "@/app/lib/theme";
 
 const { Title, Text } = Typography;
 
@@ -23,7 +23,7 @@ export default function AccessPage() {
   }>({ loading: false });
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <main className={styles.container}>
         <div className={styles.card}>
           <Card variant={"borderless"}>
@@ -49,7 +49,7 @@ export default function AccessPage() {
               <>
                 <div className={styles.header}>
                   <Title level={2} className={styles.title}>
-                    Acessar o FinTrack
+                    Acessar o FinSeven
                   </Title>
                   <Text className={styles.subtitle}>
                     Escolha seu provedor favorito para entrar ou criar sua conta

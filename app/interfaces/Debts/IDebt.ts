@@ -2,7 +2,7 @@ import {
   DebtRateType,
   DebtType,
   RecurrenceInterval,
-} from "../../Enums/FinTrackEnums";
+} from "../../Enums/FinSevenEnums";
 
 export interface IDebtPayment {
   debtPaymentID: number;

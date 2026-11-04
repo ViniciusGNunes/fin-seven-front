@@ -14,7 +14,7 @@ import { MailOutlined, ArrowLeftOutlined, SendOutlined } from "@ant-design/icons
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { requestPasswordReset } from "@/app/services/Backend/UserService";
-import { FINTRACK_THEME } from "@/app/lib/theme";
+import { FINSEVEN_THEME } from "@/app/lib/theme";
 import styles from "./page.module.scss";
 
 const { Title, Text } = Typography;
@@ -40,7 +40,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       {contextHolder}
 
       <main className={styles.container}>

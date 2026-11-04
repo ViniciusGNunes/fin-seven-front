@@ -45,7 +45,7 @@ import {
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Header } from "../../components/Header/Header";
 import styles from "./styles.module.scss";
-import { FINTRACK_THEME, FINTRACK_LOCALE } from "@/app/lib/theme";
+import { FINSEVEN_THEME, FINSEVEN_LOCALE } from "@/app/lib/theme";
 import { UserCookieInfo } from "../../interfaces/UserCookieInfo";
 import { getUserFromCookiesClient } from "@/app/services/Frontend/tokenServicesClient";
 import {
@@ -70,7 +70,7 @@ import {
   DebtRateType,
   DebtType,
   RecurrenceInterval,
-} from "@/app/Enums/FinTrackEnums";
+} from "@/app/Enums/FinSevenEnums";
 import dayjs from "dayjs";
 
 const { Content } = Layout;
@@ -558,7 +558,7 @@ export default function DebtsPage() {
   ];
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME} locale={FINTRACK_LOCALE}>
+    <ConfigProvider theme={FINSEVEN_THEME} locale={FINSEVEN_LOCALE}>
       <Layout className={styles.layout}>
         <Sidebar
           collapsed={collapsed}

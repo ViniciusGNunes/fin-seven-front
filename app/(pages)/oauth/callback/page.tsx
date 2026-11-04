@@ -6,7 +6,7 @@ import { Spin, Card, Typography, Button, Result, ConfigProvider } from "antd";
 import Cookies from "js-cookie";
 import { api } from "@/app/lib/api";
 import Link from "next/link";
-import { FINTRACK_THEME } from "@/app/lib/theme";
+import { FINSEVEN_THEME } from "@/app/lib/theme";
 
 const { Text, Title } = Typography;
 
@@ -69,8 +69,8 @@ function OAuthCallbackContent() {
         let codeVerifier: string | undefined = undefined;
         if (provider === "twitter") {
           codeVerifier =
-            sessionStorage.getItem("fintrack_twitter_verifier") || undefined;
-          sessionStorage.removeItem("fintrack_twitter_verifier");
+            sessionStorage.getItem("finseven_twitter_verifier") || undefined;
+          sessionStorage.removeItem("finseven_twitter_verifier");
         }
 
         const redirectUri = providerParam
@@ -193,7 +193,7 @@ function OAuthCallbackContent() {
 
 export default function OAuthCallbackPage() {
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <main
         style={{
           minHeight: "100vh",
