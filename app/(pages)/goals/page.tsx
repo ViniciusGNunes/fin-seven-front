@@ -42,7 +42,7 @@ import {
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Header } from "../../components/Header/Header";
 import styles from "./styles.module.scss";
-import { FINTRACK_THEME, FINTRACK_LOCALE } from "@/app/lib/theme";
+import { FINSEVEN_THEME, FINSEVEN_LOCALE } from "@/app/lib/theme";
 import { UserCookieInfo } from "../../interfaces/UserCookieInfo";
 import { getUserFromCookiesClient } from "@/app/services/Frontend/tokenServicesClient";
 import {
@@ -62,7 +62,7 @@ import { getCategories } from "@/app/services/Backend/CategoriesService";
 import { getDebtSummary } from "@/app/services/Backend/DebtService";
 import ICategory from "../../interfaces/ICategory";
 import { IDebt } from "../../interfaces/Debts/IDebt";
-import { GoalCategory, GoalFrequency } from "@/app/Enums/FinTrackEnums";
+import { GoalCategory, GoalFrequency } from "@/app/Enums/FinSevenEnums";
 import dayjs from "dayjs";
 
 const { Content } = Layout;
@@ -310,7 +310,7 @@ export default function GoalsPage() {
   });
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME} locale={FINTRACK_LOCALE}>
+    <ConfigProvider theme={FINSEVEN_THEME} locale={FINSEVEN_LOCALE}>
       <Layout className={styles.layout}>
         <Sidebar
           collapsed={collapsed}
@@ -674,9 +674,9 @@ export default function GoalsPage() {
                 <Form.Item
                   name="autoTrack"
                   valuePropName="checked"
-                  tooltip="Calcula o progresso automaticamente com base nos seus investimentos, dívidas e despesas no FinTrack"
+                  tooltip="Calcula o progresso automaticamente com base nos seus investimentos, dívidas e despesas no FinSeven"
                 >
-                  <Checkbox>Acompanhar progresso automaticamente pelo FinTrack</Checkbox>
+                  <Checkbox>Acompanhar progresso automaticamente pelo FinSeven</Checkbox>
                 </Form.Item>
 
                 <Form.Item name="description" label="Observações / Estratégia">

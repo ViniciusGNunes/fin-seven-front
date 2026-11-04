@@ -37,7 +37,7 @@ import {
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Header } from "../../components/Header/Header";
 import styles from "./styles.module.scss";
-import { FINTRACK_THEME, FINTRACK_LOCALE } from "@/app/lib/theme";
+import { FINSEVEN_THEME, FINSEVEN_LOCALE } from "@/app/lib/theme";
 import { UserCookieInfo } from "../../interfaces/UserCookieInfo";
 import { getUserFromCookiesClient } from "@/app/services/Frontend/tokenServicesClient";
 import {
@@ -150,9 +150,9 @@ export default function SettingsPage() {
 
   const handleSavePreferences = (values: any) => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("fintrack_pref_currency", values.currency || "BRL");
-      localStorage.setItem("fintrack_pref_due_day", String(values.fiscalStartDay || 1));
-      localStorage.setItem("fintrack_pref_selic", String(values.selicRate || 10.5));
+      localStorage.setItem("finseven_pref_currency", values.currency || "BRL");
+      localStorage.setItem("finseven_pref_due_day", String(values.fiscalStartDay || 1));
+      localStorage.setItem("finseven_pref_selic", String(values.selicRate || 10.5));
     }
     message.success("Preferências financeiras salvas com sucesso!");
   };
@@ -235,7 +235,7 @@ export default function SettingsPage() {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObject, null, 2));
       const downloadAnchor = document.createElement("a");
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `FinTrack_Backup_${dayjs().format("YYYYMMDD_HHmm")}.json`);
+      downloadAnchor.setAttribute("download", `FinSeven_Backup_${dayjs().format("YYYYMMDD_HHmm")}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
@@ -263,7 +263,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME} locale={FINTRACK_LOCALE}>
+    <ConfigProvider theme={FINSEVEN_THEME} locale={FINSEVEN_LOCALE}>
       <Layout className={styles.layout}>
         <Sidebar
           collapsed={collapsed}

@@ -4,7 +4,7 @@ import {
 } from "@/app/interfaces/Transaction/ITransaction";
 import { api } from "@/app/lib/api";
 import { getUserFromCookiesClient } from "../Frontend/tokenServicesClient";
-import { TimeCategory, TimePeriod } from "@/app/Enums/FinTrackEnums";
+import { TimeCategory, TimePeriod } from "@/app/Enums/FinSevenEnums";
 
 export const postTransaction = async (transaction: ITransactionPost) => {
   try {

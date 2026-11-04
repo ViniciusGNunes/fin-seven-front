@@ -32,7 +32,7 @@ import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Header } from "../../components/Header/Header";
 import { LogExpenseButton, LogExpenseModal } from "../../components/LogExpense";
 import styles from "./styles.module.scss";
-import { FINTRACK_THEME, FINTRACK_LOCALE } from "@/app/lib/theme";
+import { FINSEVEN_THEME, FINSEVEN_LOCALE } from "@/app/lib/theme";
 import ICategory from "../../interfaces/ICategory";
 import { getCategories } from "@/app/services/Backend/CategoriesService";
 import {
@@ -52,7 +52,7 @@ import {
   TimePeriod,
   TransactionStatus,
   TransactionType,
-} from "@/app/Enums/FinTrackEnums";
+} from "@/app/Enums/FinSevenEnums";
 import { camelToNormalCase, EnumToList, IEnumOptions, getTimeCategoryLabel, getTimePeriodLabel } from "@/app/utils/utils";
 
 const { Content } = Layout;
@@ -517,7 +517,7 @@ export default function ExpensesPage() {
 
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME} locale={FINTRACK_LOCALE}>
+    <ConfigProvider theme={FINSEVEN_THEME} locale={FINSEVEN_LOCALE}>
       <Layout className={styles.layout}>
         <Sidebar
           collapsed={collapsed}

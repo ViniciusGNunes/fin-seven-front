@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fintrack.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://finseven.app";
   const lastModified = new Date();
 
   return [

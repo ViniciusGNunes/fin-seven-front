@@ -13,7 +13,7 @@ import {
   ThunderboltOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import { FINTRACK_THEME } from "./lib/theme";
+import { FINSEVEN_THEME } from "./lib/theme";
 import styles from "./landing.module.scss";
 
 export default function LandingPage() {
@@ -71,14 +71,14 @@ export default function LandingPage() {
   ];
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <div className={styles.landingWrapper}>
         <div className={styles.ambientIllumination} />
 
         <header className={styles.navbar}>
           <div className={styles.brandLogo} onClick={() => router.push("/")}>
             <div className={styles.logoBadge}>F</div>
-            <span className={styles.brandName}>FinTrack</span>
+            <span className={styles.brandName}>FinSeven</span>
           </div>
 
           <nav className={styles.navLinks}>
@@ -93,7 +93,7 @@ export default function LandingPage() {
               onClick={() => router.push("/access")}
               style={{ fontWeight: 600 }}
             >
-              Acessar FinTrack
+              Acessar FinSeven
             </Button>
           </div>
         </header>
@@ -110,7 +110,7 @@ export default function LandingPage() {
             </h1>
 
             <p className={styles.heroSubtitle}>
-              O FinTrack consolida investimentos, quitação de dívidas, contas compartilhadas e fluxo de caixa diário em uma central financeira de alta performance.
+              O FinSeven consolida investimentos, quitação de dívidas, contas compartilhadas e fluxo de caixa diário em uma central financeira de alta performance.
             </p>
 
             <div className={styles.heroCtaGroup}>
@@ -192,7 +192,7 @@ export default function LandingPage() {
               <div className={styles.sectionPretitle}>Construído para Clareza</div>
               <h2 className={styles.sectionTitle}>Tudo o que você precisa para crescer</h2>
               <p className={styles.sectionSubtitle}>
-                Diga adeus a planilhas confusas. O FinTrack oferece visão financeira estruturada com ferramentas intuitivas.
+                Diga adeus a planilhas confusas. O FinSeven oferece visão financeira estruturada com ferramentas intuitivas.
               </p>
             </div>
 
@@ -215,7 +215,7 @@ export default function LandingPage() {
           <section className={styles.ctaBanner} id="security">
             <h2>Assuma o Controle das Suas Finanças</h2>
             <p>
-              Acesse o FinTrack e tenha visão unificada do seu patrimônio hoje mesmo com login em um clique.
+              Acesse o FinSeven e tenha visão unificada do seu patrimônio hoje mesmo com login em um clique.
             </p>
             <Button
               type="primary"
@@ -223,13 +223,13 @@ export default function LandingPage() {
               className={styles.ctaButton}
               onClick={() => router.push("/access")}
             >
-              Acessar FinTrack
+              Acessar FinSeven
             </Button>
           </section>
 
           <footer className={styles.footer}>
             <div className={styles.footerText}>
-              © {new Date().getFullYear()} FinTrack. Todos os direitos reservados.
+              © {new Date().getFullYear()} FinSeven. Todos os direitos reservados.
             </div>
             <div className={styles.footerLinks}>
               <a href="#features">Recursos</a>

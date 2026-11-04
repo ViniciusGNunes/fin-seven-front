@@ -1,4 +1,4 @@
-import { ExpenseStatus } from "@/app/Enums/FinTrackEnums";
+import { ExpenseStatus } from "@/app/Enums/FinSevenEnums";
 
 export interface IExpenseRead {
   expenseID: number;

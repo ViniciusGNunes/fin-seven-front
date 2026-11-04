@@ -32,7 +32,7 @@ export default function NotFound() {
       <div className={styles.content}>
         <Link href="/" className={styles.brand}>
           <div className={styles.logoBadge}>FT</div>
-          <span className={styles.brandName}>FinTrack</span>
+          <span className={styles.brandName}>FinSeven</span>
         </Link>
 
         <div className={styles.tagBadge}>

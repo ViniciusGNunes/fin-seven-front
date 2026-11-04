@@ -13,7 +13,7 @@ import {
 } from "antd";
 import { LockOutlined, CheckCircleFilled, CloseCircleFilled, KeyOutlined } from "@ant-design/icons";
 import { resetPassword } from "@/app/services/Backend/UserService";
-import { FINTRACK_THEME } from "@/app/lib/theme";
+import { FINSEVEN_THEME } from "@/app/lib/theme";
 import styles from "./page.module.scss";
 import { AxiosError } from "axios";
 
@@ -107,7 +107,7 @@ function ResetPasswordContent() {
                 block
                 onClick={() => router.push("/access")}
               >
-                Acessar FinTrack
+                Acessar FinSeven
               </Button>
             </div>
           )}
@@ -186,7 +186,7 @@ function ResetPasswordContent() {
 
 export default function ResetPasswordPage() {
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <Suspense fallback={<div style={{ minHeight: "100vh", background: "var(--bg-canvas)" }} />}>
         <ResetPasswordContent />
       </Suspense>

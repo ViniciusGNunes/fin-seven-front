@@ -1,4 +1,4 @@
-import { GoalCategory, GoalFrequency } from "../../Enums/FinTrackEnums";
+import { GoalCategory, GoalFrequency } from "../../Enums/FinSevenEnums";
 
 export interface IGoal {
   goalID: number;

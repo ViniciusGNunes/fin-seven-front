@@ -19,7 +19,7 @@ import {
   PaymentMethod,
   RecurrenceInterval,
   TransactionType,
-} from "@/app/Enums/FinTrackEnums";
+} from "@/app/Enums/FinSevenEnums";
 import ICategory from "@/app/interfaces/ICategory";
 import { ITransactionPost } from "@/app/interfaces/Transaction/ITransaction";
 import { getCategories } from "@/app/services/Backend/CategoriesService";

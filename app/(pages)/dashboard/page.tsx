@@ -30,7 +30,7 @@ import {
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Header } from "../../components/Header/Header";
 import styles from "./styles.module.scss";
-import { FINTRACK_THEME, FINTRACK_LOCALE } from "@/app/lib/theme";
+import { FINSEVEN_THEME, FINSEVEN_LOCALE } from "@/app/lib/theme";
 import { UserCookieInfo } from "../../interfaces/UserCookieInfo";
 import { getUserFromCookiesClient } from "@/app/services/Frontend/tokenServicesClient";
 import { getGoalsSummary } from "@/app/services/Backend/GoalService";
@@ -43,7 +43,7 @@ import { getReceivablesSummary } from "@/app/services/Backend/ReceivableService"
 import { IReceivableSummary } from "@/app/interfaces/Receivables/IReceivable";
 import { getTransactions } from "@/app/services/Backend/TransactionService";
 import { ITransactionRead } from "@/app/interfaces/Transaction/ITransaction";
-import { TimeCategory, TimePeriod } from "@/app/Enums/FinTrackEnums";
+import { TimeCategory, TimePeriod } from "@/app/Enums/FinSevenEnums";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 
@@ -172,7 +172,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME} locale={FINTRACK_LOCALE}>
+    <ConfigProvider theme={FINSEVEN_THEME} locale={FINSEVEN_LOCALE}>
       <Layout className={styles.layout}>
         <Sidebar
           collapsed={collapsed}

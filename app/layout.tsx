@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fintrack.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://finseven.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "FinTrack - Gestão e Inteligência Financeira",
-    template: "%s | FinTrack",
+    default: "FinSeven - Gestão e Inteligência Financeira",
+    template: "%s | FinSeven",
   },
   description:
     "Consolide investimentos, amortização de dívidas, despesas compartilhadas e fluxo de caixa em um único painel.",
@@ -27,17 +27,17 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   openGraph: {
-    title: "FinTrack - Gestão e Inteligência Financeira",
+    title: "FinSeven - Gestão e Inteligência Financeira",
     description:
       "Consolide investimentos, amortização de dívidas, despesas compartilhadas e fluxo de caixa em um único painel.",
     url: siteUrl,
-    siteName: "FinTrack",
+    siteName: "FinSeven",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FinTrack - Gestão e Inteligência Financeira",
+    title: "FinSeven - Gestão e Inteligência Financeira",
     description:
       "Consolide investimentos, amortização de dívidas, despesas compartilhadas e fluxo de caixa em um único painel.",
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "FinTrack",
+  name: "FinSeven",
   applicationCategory: "FinanceApplication",
   operatingSystem: "Web",
   offers: {

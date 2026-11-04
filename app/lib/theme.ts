@@ -1,9 +1,9 @@
 import { ThemeConfig, theme } from "antd";
 import ptBR from "antd/locale/pt_BR";
 
-export const FINTRACK_LOCALE = ptBR;
+export const FINSEVEN_LOCALE = ptBR;
 
-export const FINTRACK_THEME: ThemeConfig = {
+export const FINSEVEN_THEME: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: "#10b981",

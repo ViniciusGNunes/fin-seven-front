@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { ConfigProvider } from "antd";
-import { FINTRACK_THEME } from "../lib/theme";
+import { FINSEVEN_THEME } from "../lib/theme";
 import styles from "./corporate.module.scss";
 
 export default function CorporateLandingPage() {
@@ -113,7 +113,7 @@ export default function CorporateLandingPage() {
   ];
 
   return (
-    <ConfigProvider theme={FINTRACK_THEME}>
+    <ConfigProvider theme={FINSEVEN_THEME}>
       <div className={styles.corporateWrapper}>
         {/* Cabeçalho */}
         <header className={styles.header}>
@@ -124,7 +124,7 @@ export default function CorporateLandingPage() {
             >
               <div className={styles.brandSquare}>F</div>
               <div className={styles.brandTitle}>
-                <span className={styles.brandName}>FinTrack</span>
+                <span className={styles.brandName}>FinSeven</span>
                 <span className={styles.brandSub}>Gestão Patrimonial</span>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function CorporateLandingPage() {
                 className={styles.btnDirectRegister}
                 onClick={() => router.push("/access")}
               >
-                Acessar FinTrack
+                Acessar FinSeven
               </button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function CorporateLandingPage() {
             </h1>
 
             <p className={styles.heroLead}>
-              O FinTrack consolida sua carteira de investimentos, projeções de
+              O FinSeven consolida sua carteira de investimentos, projeções de
               amortização de dívidas, contas compartilhadas e fluxo de caixa
               diário.
             </p>
@@ -177,7 +177,7 @@ export default function CorporateLandingPage() {
                 className={styles.primaryBtn}
                 onClick={() => router.push("/access")}
               >
-                Acessar FinTrack &rarr;
+                Acessar FinSeven &rarr;
               </button>
               <a href="#modules" className={styles.secondaryBtn}>
                 Ver Recursos
@@ -379,7 +379,7 @@ export default function CorporateLandingPage() {
                 <div className={styles.terminalTag}>[COMECE AGORA]</div>
                 <h3>Assuma o controle das suas finanças hoje mesmo</h3>
                 <p>
-                  Acesse o FinTrack e tenha uma visão unificada dos seus
+                  Acesse o FinSeven e tenha uma visão unificada dos seus
                   investimentos, dívidas e despesas diárias em poucos minutos.
                 </p>
               </div>
@@ -390,7 +390,7 @@ export default function CorporateLandingPage() {
                   className={styles.primaryBtn}
                   onClick={() => router.push("/access")}
                 >
-                  Acessar FinTrack &rarr;
+                  Acessar FinSeven &rarr;
                 </button>
               </div>
             </div>
@@ -400,7 +400,7 @@ export default function CorporateLandingPage() {
           <footer className={styles.footer}>
             <div className={styles.footerRow}>
               <div>
-                FINTRACK &copy; {new Date().getFullYear()}. GESTÃO FINANCEIRA E
+                FINSEVEN &copy; {new Date().getFullYear()}. GESTÃO FINANCEIRA E
                 PATRIMONIAL. TODOS OS DIREITOS RESERVADOS.
               </div>
               <div className={styles.footerLinks}>

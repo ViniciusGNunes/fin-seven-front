@@ -1,9 +1,9 @@
-# FinTrack
+# FinSeven
 
 > Plataforma moderna de gestão e inteligência financeira pessoal e compartilhada.
 
 ## Overview
-FinTrack consolida gestão patrimonial, carteira de investimentos multi-moeda, controle detalhado de despesas, cronogramas de amortização de dívidas e rateio de despesas compartilhadas em um único painel.
+FinSeven consolida gestão patrimonial, carteira de investimentos multi-moeda, controle detalhado de despesas, cronogramas de amortização de dívidas e rateio de despesas compartilhadas em um único painel.
 
 ## Principais Módulos
 - **Investimentos**: Renda fixa (CDB, Tesouro, CDI), renda variável (ações B3, FIIs, internacional, criptoativos) e controle de saldo livre em conta (Portfolio Cash).
