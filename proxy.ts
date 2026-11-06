@@ -22,7 +22,6 @@ export function proxy(request: NextRequest) {
 
   const isPublicPage =
     pathname === "/" ||
-    pathname === "/corporate" ||
     pathname === "/404" ||
     isAuthPage ||
     isOAuthCallback;

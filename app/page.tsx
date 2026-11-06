@@ -1,245 +1,327 @@
-"use client";
-
-import React from "react";
-import { Button, ConfigProvider, Tag } from "antd";
-import {
-  RiseOutlined,
-  AccountBookOutlined,
-  TeamOutlined,
-  RocketOutlined,
-  CalendarOutlined,
-  SafetyCertificateOutlined,
-  ArrowRightOutlined,
-  ThunderboltOutlined,
-} from "@ant-design/icons";
-import { useRouter } from "next/navigation";
-import { FINSEVEN_THEME } from "./lib/theme";
+import Link from "next/link";
+import { Instrument_Serif } from "next/font/google";
 import styles from "./landing.module.scss";
 
-export default function LandingPage() {
-  const router = useRouter();
+const serif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
 
-  const features = [
-    {
-      icon: <RiseOutlined />,
-      color: "#10b981",
-      bgColor: "rgba(16, 185, 129, 0.12)",
-      title: "Crescimento de Investimentos",
-      description:
-        "Acompanhe renda fixa, ações e fundos com cálculo automático de rendimento e distribuição estratégica da carteira.",
-    },
-    {
-      icon: <AccountBookOutlined />,
-      color: "#f59e0b",
-      bgColor: "rgba(245, 158, 11, 0.12)",
-      title: "Eliminação Inteligente de Dívidas",
-      description:
-        "Visualize saldos devedores, cronogramas de amortização e projeções de quitação antecipada com alertas claros.",
-    },
-    {
-      icon: <TeamOutlined />,
-      color: "#38bdf8",
-      bgColor: "rgba(56, 189, 248, 0.12)",
-      title: "Despesas Compartilhadas",
-      description:
-        "Divida contas com amigos, família ou colegas de quarto. Monitore saldos pendentes e realize acertos transparentes.",
-    },
-    {
-      icon: <RocketOutlined />,
-      color: "#a855f7",
-      bgColor: "rgba(168, 85, 247, 0.12)",
-      title: "Metas Financeiras & Ritmo",
-      description:
-        "Estabeleça reservas de emergência e conquistas financeiras com acompanhamento do ritmo de poupança em tempo real.",
-    },
-    {
-      icon: <CalendarOutlined />,
-      color: "#ec4899",
-      bgColor: "rgba(236, 72, 153, 0.12)",
-      title: "Fluxo de Caixa no Calendário",
-      description:
-        "Inspecione despesas e receitas recorrentes em visualização diária para antecipar gastos e manter o saldo positivo.",
-    },
-    {
-      icon: <SafetyCertificateOutlined />,
-      color: "#6366f1",
-      bgColor: "rgba(99, 102, 241, 0.12)",
-      title: "Segurança e Controle Total",
-      description:
-        "Arquitetura moderna em .NET Core e Next.js com autenticação segura, cookies criptografados e controle de categorias.",
-    },
-  ];
+// Patrimônio líquido, últimos 12 meses (dados de exemplo)
+const NET_WORTH = [31, 33, 32, 36, 39, 38, 43, 47, 46, 51, 55, 58.8];
 
+function Sparkline() {
+  const w = 560;
+  const h = 140;
+  const min = 28;
+  const max = 62;
+  const pts = NET_WORTH.map((v, i) => {
+    const x = (i / (NET_WORTH.length - 1)) * w;
+    const y = h - ((v - min) / (max - min)) * h;
+    return [x, y] as const;
+  });
+  const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
+  const [lx, ly] = pts[pts.length - 1];
   return (
-    <ConfigProvider theme={FINSEVEN_THEME}>
-      <div className={styles.landingWrapper}>
-        <div className={styles.ambientIllumination} />
+    <svg
+      viewBox={`-4 -8 ${w + 16} ${h + 16}`}
+      className={styles.spark}
+      role="img"
+      aria-label="Patrimônio líquido subindo ao longo de doze meses"
+    >
+      {[0.25, 0.5, 0.75].map((t) => (
+        <line key={t} x1="0" x2={w} y1={h * t} y2={h * t} className={styles.sparkGrid} />
+      ))}
+      <path d={d} className={styles.sparkLine} />
+      <circle cx={lx} cy={ly} r="4" className={styles.sparkDot} />
+    </svg>
+  );
+}
 
-        <header className={styles.navbar}>
-          <div className={styles.brandLogo} onClick={() => router.push("/")}>
-            <div className={styles.logoBadge}>F</div>
-            <span className={styles.brandName}>FinSeven</span>
-          </div>
+function Calendar() {
+  // Mês de exemplo: dias com movimentação
+  const marks: Record<number, "in" | "out" | "both"> = {
+    1: "out", 3: "out", 5: "in", 8: "out", 10: "out", 12: "out",
+    15: "both", 18: "out", 20: "out", 22: "out", 25: "out", 28: "out", 30: "in",
+  };
+  return (
+    <div className={styles.cal} aria-hidden>
+      {Array.from({ length: 30 }, (_, i) => i + 1).map((day) => (
+        <span key={day} className={styles.calDay} data-mark={marks[day]}>
+          {day}
+        </span>
+      ))}
+    </div>
+  );
+}
 
-          <nav className={styles.navLinks}>
-            <a href="#features">Recursos</a>
-            <a href="#overview">Plataforma</a>
-            <a href="#security">Segurança</a>
-          </nav>
+export default function EditorialLanding() {
+  return (
+    <div className={`${styles.page} ${serif.variable}`}>
+      <header className={styles.header}>
+        <Link href="/" className={styles.wordmark}>
+          FinSeven
+        </Link>
+        <nav className={styles.nav}>
+          <a href="#painel">Painel</a>
+          <a href="#despesas">Despesas</a>
+          <a href="#investimentos">Investimentos</a>
+          <a href="#dividas">Dívidas</a>
+          <a href="#receber">A receber</a>
+          <a href="#calendario">Calendário</a>
+          <a href="#metas">Metas</a>
+        </nav>
+        <Link href="/access" className={styles.enter}>
+          Entrar
+        </Link>
+      </header>
 
-          <div className={styles.navActions}>
-            <Button
-              type="primary"
-              onClick={() => router.push("/access")}
-              style={{ fontWeight: 600 }}
-            >
-              Acessar FinSeven
-            </Button>
-          </div>
-        </header>
-
-        <main className={styles.container}>
-          <section className={styles.heroSection}>
-            <div className={styles.heroBadge}>
-              <ThunderboltOutlined /> Inteligência e Gestão Patrimonial
-            </div>
-
-            <h1 className={styles.heroTitle}>
-              Controle seu patrimônio, <br />
-              <span className={styles.accentText}>simplifique cada decisão.</span>
-            </h1>
-
-            <p className={styles.heroSubtitle}>
-              O FinSeven consolida investimentos, quitação de dívidas, contas compartilhadas e fluxo de caixa diário em uma central financeira de alta performance.
+      <main>
+        <section className={styles.hero}>
+          <h1 className={styles.headline}>
+            Para onde foi o seu dinheiro <em>este mês?</em>
+          </h1>
+          <div className={styles.heroBody}>
+            <p className={styles.lede}>
+              O FinSeven junta o que você investe, o que você deve, o que te devem e o que vai
+              vencer na semana. Em uma tela, sem planilha.
             </p>
+            <Link href="/access" className={styles.cta}>
+              Criar minha conta <span aria-hidden>→</span>
+            </Link>
+            <p className={styles.fine}>Entre com e-mail ou conta Google.</p>
+          </div>
 
-            <div className={styles.heroCtaGroup}>
-              <Button
-                type="primary"
-                size="large"
-                className={styles.primaryCta}
-                icon={<ArrowRightOutlined />}
-                iconPosition="end"
-                onClick={() => router.push("/access")}
-              >
-                Acessar Plataforma
-              </Button>
+          <figure className={styles.figure}>
+            <div className={styles.figureHead}>
+              <span>Patrimônio líquido</span>
+              <span className={styles.figureNote}>exemplo · 12 meses</span>
             </div>
-
-            <div className={styles.dashboardPreview} id="overview">
-              <div className={styles.previewHeader}>
-                <div className={styles.windowDots}>
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className={styles.previewStatus}>
-                  <div className={styles.liveDot} />
-                  <span>Sincronização em Tempo Real</span>
-                </div>
-              </div>
-
-              <div className={styles.previewGrid}>
-                <div className={styles.previewStatCard}>
-                  <div className={styles.statLabel}>
-                    <RiseOutlined style={{ color: "#10b981" }} /> Total em Investimentos
-                  </div>
-                  <div className={styles.statValue}>R$ 48.920,50</div>
-                  <Tag color="success" style={{ marginTop: 8, borderRadius: 4 }}>
-                    +14,2% de rendimento este ano
-                  </Tag>
-                </div>
-
-                <div className={styles.previewStatCard}>
-                  <div className={styles.statLabel}>
-                    <AccountBookOutlined style={{ color: "#f59e0b" }} /> Saldo Devedor
-                  </div>
-                  <div className={styles.statValue} style={{ color: "#f59e0b" }}>
-                    R$ 12.400,00
-                  </div>
-                  <span className={styles.statBadge} style={{ color: "#94a3b8" }}>
-                    3 empréstimos (68% quitado)
-                  </span>
-                </div>
-
-                <div className={styles.previewStatCard}>
-                  <div className={styles.statLabel}>
-                    <TeamOutlined style={{ color: "#38bdf8" }} /> Pendente a Receber
-                  </div>
-                  <div className={styles.statValue} style={{ color: "#38bdf8" }}>
-                    R$ 1.850,00
-                  </div>
-                  <span className={styles.statBadge} style={{ color: "#94a3b8" }}>
-                    4 despesas em grupo
-                  </span>
-                </div>
-
-                <div className={styles.previewStatCard}>
-                  <div className={styles.statLabel}>
-                    <RocketOutlined style={{ color: "#a855f7" }} /> Reserva de Emergência
-                  </div>
-                  <div className={styles.statValue}>R$ 20.000,00</div>
-                  <div style={{ marginTop: 8, fontSize: "0.8rem", color: "#10b981", fontWeight: 600 }}>
-                    85% Concluído
-                  </div>
-                </div>
-              </div>
+            <div className={styles.bigNumber}>
+              R$ 58.840<span>,50</span>
             </div>
-          </section>
-
-          <section className={styles.featuresSection} id="features">
-            <div className={styles.sectionHeader}>
-              <div className={styles.sectionPretitle}>Construído para Clareza</div>
-              <h2 className={styles.sectionTitle}>Tudo o que você precisa para crescer</h2>
-              <p className={styles.sectionSubtitle}>
-                Diga adeus a planilhas confusas. O FinSeven oferece visão financeira estruturada com ferramentas intuitivas.
-              </p>
+            <Sparkline />
+            <div className={styles.axis}>
+              <span>nov</span>
+              <span>mai</span>
+              <span>out</span>
             </div>
+          </figure>
+        </section>
 
-            <div className={styles.featureGrid}>
-              {features.map((item, idx) => (
-                <div key={idx} className={styles.featureCard}>
-                  <div
-                    className={styles.featureIcon}
-                    style={{ color: item.color, backgroundColor: item.bgColor }}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3 className={styles.featureTitle}>{item.title}</h3>
-                  <p className={styles.featureDescription}>{item.description}</p>
-                </div>
+        <section className={styles.chapter} id="painel">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>01 · Painel</span>
+            <h2>O mês inteiro numa tela só.</h2>
+            <p>
+              Entradas, saídas e saldo logo ao abrir. Embaixo, as últimas transações, as metas, os
+              investimentos em destaque e quem ainda te deve. Dá para entender a situação em dez
+              segundos.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <div className={styles.row}>
+              <span className={styles.muted}>Entradas</span>
+              <span className={`${styles.mono} ${styles.green}`}>R$ 8.400,00</span>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.muted}>Saídas</span>
+              <span className={styles.mono}>R$ 5.915,30</span>
+            </div>
+            <div className={`${styles.row} ${styles.total}`}>
+              <span>Saldo do mês</span>
+              <span className={`${styles.mono} ${styles.green}`}>R$ 2.484,70</span>
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.chapter} ${styles.flip}`} id="despesas">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>02 · Despesas</span>
+            <h2>Cada conta no dia em que vence.</h2>
+            <p>
+              Contas avulsas, parceladas e assinaturas ficam na mesma lista, com categoria e status.
+              Marque como paga quando pagar. Cancelou o streaming? Cancele a assinatura aqui também.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <ul className={styles.ledger}>
+              <li>
+                <span>Aluguel</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.green}`}>pago · R$ 2.100,00</span>
+              </li>
+              <li>
+                <span>Internet</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.amber}`}>vence dia 10 · R$ 119,90</span>
+              </li>
+              <li>
+                <span>Curso de inglês · 3/12</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.muted}`}>R$ 280,00</span>
+              </li>
+              <li>
+                <span>Streaming · assinatura</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.muted}`}>R$ 44,90</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section className={styles.chapter} id="investimentos">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>03 · Investimentos</span>
+            <h2>Quanto rendeu, de verdade.</h2>
+            <p>
+              Renda fixa, ações e FIIs, em real, dólar ou euro. Para cada ativo você vê o que
+              aportou, o saldo atual, o lucro e o peso dele na carteira.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <div className={styles.split} aria-hidden>
+              <b style={{ width: "58%" }} />
+              <i />
+            </div>
+            <div className={styles.row}>
+              <span>Tesouro IPCA+ 2035</span>
+              <span className={styles.mono}>R$ 28.450,00 · 58%</span>
+            </div>
+            <div className={styles.row}>
+              <span>Carteira de FIIs</span>
+              <span className={styles.mono}>R$ 20.470,50 · 42%</span>
+            </div>
+            <div className={`${styles.row} ${styles.total}`}>
+              <span>Resultado acumulado</span>
+              <span className={`${styles.mono} ${styles.green}`}>+ 14,2%</span>
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.chapter} ${styles.flip}`} id="dividas">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>04 · Dívidas</span>
+            <h2>Saiba quando a dívida acaba.</h2>
+            <p>
+              Cada financiamento mostra o saldo, a parcela atual e quanto você economiza em juros se
+              antecipar um pagamento. Você decide com o número na frente.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <div className={styles.row}>
+              <span>Financiamento imobiliário</span>
+              <span className={styles.mono}>34 de 120</span>
+            </div>
+            <div className={styles.ticks} aria-hidden>
+              {Array.from({ length: 40 }, (_, i) => (
+                <i key={i} data-on={i < 11} />
               ))}
             </div>
-          </section>
+            <div className={styles.row}>
+              <span className={styles.muted}>Saldo devedor</span>
+              <span className={`${styles.mono} ${styles.amber}`}>R$ 12.400,00</span>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.muted}>Antecipando R$ 500 por mês</span>
+              <span className={styles.mono}>quita 14 meses antes</span>
+            </div>
+          </div>
+        </section>
 
-          <section className={styles.ctaBanner} id="security">
-            <h2>Assuma o Controle das Suas Finanças</h2>
+        <section className={styles.chapter} id="receber">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>05 · A receber</span>
+            <h2>Dividir a conta sem constrangimento.</h2>
             <p>
-              Acesse o FinSeven e tenha visão unificada do seu patrimônio hoje mesmo com login em um clique.
+              Lance a despesa, escolha quem participou e o app calcula quem deve a quem. Quando
+              alguém paga, você marca como acertado e segue a vida.
             </p>
-            <Button
-              type="primary"
-              size="large"
-              className={styles.ctaButton}
-              onClick={() => router.push("/access")}
-            >
-              Acessar FinSeven
-            </Button>
-          </section>
+          </div>
+          <div className={styles.exhibit}>
+            <ul className={styles.ledger}>
+              <li>
+                <span>Ana</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.green}`}>deve R$ 62,50</span>
+              </li>
+              <li>
+                <span>Bruno</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.green}`}>deve R$ 125,00</span>
+              </li>
+              <li>
+                <span>Carla</span>
+                <span className={styles.leader} />
+                <span className={`${styles.mono} ${styles.muted}`}>acertado</span>
+              </li>
+            </ul>
+            <div className={`${styles.row} ${styles.total}`}>
+              <span>Pendente</span>
+              <span className={`${styles.mono} ${styles.green}`}>R$ 187,50</span>
+            </div>
+          </div>
+        </section>
 
-          <footer className={styles.footer}>
-            <div className={styles.footerText}>
-              © {new Date().getFullYear()} FinSeven. Todos os direitos reservados.
+        <section className={`${styles.chapter} ${styles.flip}`} id="calendario">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>06 · Calendário</span>
+            <h2>Veja o mês antes de ele chegar.</h2>
+            <p>
+              Contas fixas, salário e parcelas aparecem no dia certo. Dá para notar o dia 15
+              apertado com duas semanas de antecedência.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <Calendar />
+            <div className={styles.legend}>
+              <span><i data-k="out" /> saída</span>
+              <span><i data-k="in" /> entrada</span>
             </div>
-            <div className={styles.footerLinks}>
-              <a href="#features">Recursos</a>
-              <a onClick={() => router.push("/access")} style={{ cursor: "pointer" }}>
-                Acessar Plataforma
-              </a>
+          </div>
+        </section>
+
+        <section className={styles.chapter} id="metas">
+          <div className={styles.chapterText}>
+            <span className={styles.num}>07 · Metas</span>
+            <h2>Uma meta, um ritmo.</h2>
+            <p>
+              Reserva de emergência, viagem, entrada de um apartamento. O FinSeven compara quanto
+              você guardou com quanto precisaria guardar por mês e avisa se saiu do trilho.
+            </p>
+          </div>
+          <div className={styles.exhibit}>
+            <div className={styles.row}>
+              <span>Reserva de emergência</span>
+              <span className={styles.mono}>R$ 20.000 de R$ 23.500</span>
             </div>
-          </footer>
-        </main>
-      </div>
-    </ConfigProvider>
+            <div className={styles.bar} aria-hidden>
+              <b style={{ width: "85%" }} />
+              <u style={{ left: "80%" }} />
+            </div>
+            <div className={styles.row}>
+              <span className={styles.muted}>Pelo ritmo ideal você já estaria em 80%</span>
+              <span className={`${styles.mono} ${styles.green}`}>à frente</span>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.close}>
+          <h2>
+            Comece com o que você tem hoje. <em>O resto você ajusta depois.</em>
+          </h2>
+          <Link href="/access" className={styles.cta}>
+            Criar minha conta <span aria-hidden>→</span>
+          </Link>
+        </section>
+      </main>
+
+      <footer className={styles.footer}>
+        <span>© {new Date().getFullYear()} FinSeven</span>
+        <span>Seus dados ficam na sua conta. Não vendemos nem compartilhamos.</span>
+      </footer>
+    </div>
   );
 }

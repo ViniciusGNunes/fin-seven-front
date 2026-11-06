@@ -29,8 +29,7 @@ api.interceptors.response.use(
         currentPath !== "/access" &&
         currentPath !== "/login" &&
         currentPath !== "/register" &&
-        currentPath !== "/" &&
-        currentPath !== "/corporate"
+        currentPath !== "/"
       ) {
         window.location.href = "/access";
       }
